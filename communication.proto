@@ -9,15 +9,15 @@ message Wrapper {
         string origin = 1;
         string destination = 2;
         string id = 3;
-        enum type {
+        enum Type {
             REQUEST = 0;
             RESPONSE = 1;
             SERVER = 2;
         }
-        type type = 4;
+        Type type = 4;
     }
     Header header = 1;
-    oneof body = {
+    oneof body {
         Introduction intro = 1;
     }
 }
