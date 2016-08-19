@@ -1,5 +1,5 @@
 syntax = "proto3";
-package protobuf;
+package packets;
 
 message Wrapper {
     // Begin the header information. This is standard information
