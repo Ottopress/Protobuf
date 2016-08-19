@@ -1,0 +1,40 @@
+syntax = "proto3";
+package ottopress.protobuf;
+
+message Wrapper {
+    // Begin the header information. This is standard information
+    // across all packets that is necessary for basic functionality
+    // and/or routing.
+    message Header {
+        string origin = 1;
+        string destination = 2;
+        string id = 3;
+        enum type {
+            REQUEST = 0;
+            RESPONSE = 1;
+            SERVER = 2;
+        }
+        type type = 4;
+    }
+    Header header = 1;
+    oneof body = {
+        Introduction intro = 1;
+    }
+}
+
+// IntroductionServer is sent immediately upon opening of a socket
+// from the server to the client. As this is not a request->response
+// packet, it is named Server to indicate the one-sided nature.
+// <br>
+message IntroductionServer {
+    bool setup = 1;
+}
+
+// ConfigurationRequest contains the information that needs to be
+// configured on the router before it can function as a router.
+// <br>
+// As of the time of writing this, only the room name must be
+// configured.
+message ConfigurationRequest {
+    string name = 1;
+}
