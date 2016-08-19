@@ -18,7 +18,7 @@ message Wrapper {
     }
     Header header = 1;
     oneof body {
-        Introduction intro = 1;
+        IntroductionServer intro = 1;
     }
 }
 
