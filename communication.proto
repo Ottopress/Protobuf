@@ -1,5 +1,5 @@
 syntax = "proto3";
-package ottopress.protobuf;
+package protobuf;
 
 message Wrapper {
     // Begin the header information. This is standard information
