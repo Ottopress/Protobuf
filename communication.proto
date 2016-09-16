@@ -21,7 +21,12 @@ message Wrapper {
         IntroductionServer intro = 2;
         RouterConfigurationRequest routerConfigReq = 3;
         RoomConfigurationRequest roomConfigReq = 4;
+        GeneralErrorResponse errorResponse = 5;
     }
+}
+
+message GeneralErrorResponse {
+    string errorMessage = 1;
 }
 
 // IntroductionServer is sent immediately upon opening of a socket
@@ -38,6 +43,10 @@ message IntroductionServer {
 message RouterConfigurationRequest {
     string ssid = 1;
     string password = 2;
+}
+
+message RouterConfigurationResponse {
+
 }
 
 // RoomConfigurationRequest contains information to configure and/or
