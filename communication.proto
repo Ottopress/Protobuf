@@ -9,7 +9,7 @@ message Packet {
   message Header {
     string origin = 1;
     string destination = 2;
-    string device = 3
+    string device = 3;
     string id = 4;
     enum Type {
       REQUEST = 0;
