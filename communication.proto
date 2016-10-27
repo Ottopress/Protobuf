@@ -1,57 +1,63 @@
 syntax = "proto3";
 package packets;
+import "commands.proto";
 
-message Wrapper {
-    // Begin the header information. This is standard information
-    // across all packets that is necessary for basic functionality
-    // and/or routing.
-    message Header {
-        string origin = 1;
-        string destination = 2;
-        string id = 3;
-        enum Type {
-            REQUEST = 0;
-            RESPONSE = 1;
-            SERVER = 2;
-        }
-        Type type = 4;
+message Packet {
+  // Begin the header information. This is standard information
+  // across all packets that is necessary for basic functionality
+  // and/or routing.
+  message Header {
+    string origin = 1;
+    string destination = 2;
+    string device = 3
+    string id = 4;
+    enum Type {
+      REQUEST = 0;
+      RESPONSE = 1;
+      PASSIVE = 2;
     }
-    Header header = 1;
-    oneof body {
-        IntroductionServer intro = 2;
-        RouterConfigurationRequest routerConfigReq = 3;
-        RoomConfigurationRequest roomConfigReq = 4;
-        GeneralErrorResponse errorResponse = 5;
-    }
+    Type type = 5;
+  }
+  Header header = 1;
+  oneof body {
+    IntroductionPassive intro = 2;
+    RouterConfigurationRequest routerConfigReq = 3;
+    RoomConfigurationRequest roomConfigReq = 4;
+    GeneralErrorResponse errorResponse = 5;
+    commands.Wrapper commandWrapper = 99;
+  }
 }
 
 message GeneralErrorResponse {
-    string errorMessage = 1;
+  string errorMessage = 1;
 }
 
-// IntroductionServer is sent immediately upon opening of a socket
+// IntroductionPassive is sent immediately upon opening of a socket
 // from the server to the client. As this is not a request->response
-// packet, it is named Server to indicate the one-sided nature.
+// packet, it is named Passive to indicate the one-sided nature.
 // <br>
-message IntroductionServer {
-    bool setup = 1;
+message IntroductionPassive {
+  bool setup = 1;
 }
 
 // RouterConfigurationRequest contains the information that needs to be
 // configured on the router before it can function as a router.
 // <br>
 message RouterConfigurationRequest {
-    string ssid = 1;
-    string password = 2;
-}
-
-message RouterConfigurationResponse {
-
+  string ssid = 1;
+  string password = 2;
 }
 
 // RoomConfigurationRequest contains information to configure and/or
 // customize the room.
 // <br>
 message RoomConfigurationRequest {
-    string name = 1;
+  string name = 1;
+}
+
+// DeviceTransferPassive notifies definers and phones that a device 
+// has paired with a new definer.
+// <br>
+message DeviceTransferPassive {
+  string device = 1;
 }

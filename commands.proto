@@ -1,0 +1,14 @@
+syntax = "proto3";
+package commands;
+
+message Wrapper {
+  oneof body {
+    Execute execute = 1; 
+  }
+}
+
+message Execute {
+  string core = 1;
+  repeated string parameters = 2;
+}
+
