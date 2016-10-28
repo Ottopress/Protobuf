@@ -24,7 +24,7 @@ message Packet {
     RouterConfigurationRequest routerConfigReq = 3;
     RoomConfigurationRequest roomConfigReq = 4;
     GeneralErrorResponse errorResponse = 5;
-    commands.Wrapper commandWrapper = 99;
+    Command command = 99;
   }
 }
 
