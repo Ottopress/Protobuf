@@ -6,6 +6,7 @@ message Command {
     string core = 1;
     string modifier = 2;
   }
+  Device device = 1;
   oneof body {
     Execute execute = 11; 
   }
