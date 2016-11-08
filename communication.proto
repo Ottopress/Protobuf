@@ -16,6 +16,7 @@ message Packet {
       PASSIVE = 2;
     }
     Type type = 4;
+    repeated string route = 5;
   }
   Header header = 1;
   oneof body {
@@ -23,6 +24,7 @@ message Packet {
     RouterConfigurationRequest routerConfigReq = 3;
     RoomConfigurationRequest roomConfigReq = 4;
     GeneralErrorResponse errorResponse = 5;
+    DeviceTransferPassive deviceTransfer = 6;
     Command command = 99;
   }
 }
