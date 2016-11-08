@@ -2,8 +2,12 @@ syntax = "proto3";
 package packets;
 
 message Command {
+  message Device {
+    string core = 1;
+    string modifier = 2;
+  }
   oneof body {
-    Execute execute = 1; 
+    Execute execute = 11; 
   }
 }
 

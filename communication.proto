@@ -9,14 +9,13 @@ message Packet {
   message Header {
     string origin = 1;
     string destination = 2;
-    string device = 3;
-    string id = 4;
+    string id = 3;
     enum Type {
       REQUEST = 0;
       RESPONSE = 1;
       PASSIVE = 2;
     }
-    Type type = 5;
+    Type type = 4;
   }
   Header header = 1;
   oneof body {
