@@ -22,7 +22,6 @@ message Packet {
   oneof body {
     IntroductionPassive intro = 2;
     RouterConfigurationRequest routerConfigReq = 3;
-    RoomConfigurationRequest roomConfigReq = 4;
     GeneralErrorResponse errorResponse = 5;
     DeviceTransferPassive deviceTransfer = 6;
     Command command = 99;
@@ -47,13 +46,7 @@ message IntroductionPassive {
 message RouterConfigurationRequest {
   string ssid = 1;
   string password = 2;
-}
-
-// RoomConfigurationRequest contains information to configure and/or
-// customize the room.
-// <br>
-message RoomConfigurationRequest {
-  string name = 1;
+  string room = 3;
 }
 
 // DeviceTransferPassive notifies definers and phones that a device 
