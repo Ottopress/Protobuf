@@ -46,7 +46,7 @@ message IntroductionPassive {
 message RouterConfigurationRequest {
   string ssid = 1;
   string password = 2;
-  string room = 3;
+  string name = 3;
 }
 
 // DeviceTransferPassive notifies definers and phones that a device 
